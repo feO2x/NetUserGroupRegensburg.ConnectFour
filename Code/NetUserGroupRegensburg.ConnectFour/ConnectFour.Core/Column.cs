@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConnectFour.Core
 {
@@ -33,7 +31,7 @@ namespace ConnectFour.Core
             throw new InvalidOperationException("You cannot set a chip when all cells in this column already have a chip.");
         }
 
-        public bool IsColumnFull
+        public bool IsFull
         {
             get { return _cells.All(cell => cell.Chip != null); }
         }

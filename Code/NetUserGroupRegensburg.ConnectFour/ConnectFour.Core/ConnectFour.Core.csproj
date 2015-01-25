@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoardLine.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="Chip.cs" />
     <Compile Include="Color.cs" />
