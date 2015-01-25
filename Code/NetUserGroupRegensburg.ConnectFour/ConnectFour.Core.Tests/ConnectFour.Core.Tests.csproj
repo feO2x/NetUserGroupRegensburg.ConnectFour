@@ -51,6 +51,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ColumnTests.cs" />
+    <Compile Include="LineDummy.cs" />
+    <Compile Include="LineTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
