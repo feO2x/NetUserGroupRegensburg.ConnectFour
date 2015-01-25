@@ -4,22 +4,19 @@ using System.Linq;
 
 namespace ConnectFour.Core
 {
-    public class Column
+    public class Column : BoardLine
     {
-        private readonly IReadOnlyList<Cell> _cells;
-
         public Column(IReadOnlyList<Cell> cells)
+            : base(cells)
         {
-            if (cells == null) throw new ArgumentNullException("cells");
-
-            _cells = cells;
+            
         }
 
         public void SetChip(Chip chip)
         {
             if (chip == null) throw new ArgumentNullException("chip");
 
-            foreach (var cell in _cells)
+            foreach (var cell in Cells)
             {
                 if (cell.Chip == null)
                 {
@@ -33,7 +30,7 @@ namespace ConnectFour.Core
 
         public bool IsFull
         {
-            get { return _cells.All(cell => cell.Chip != null); }
+            get { return Cells.All(cell => cell.Chip != null); }
         }
     }
 }
