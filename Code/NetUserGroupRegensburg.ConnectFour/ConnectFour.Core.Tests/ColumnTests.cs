@@ -20,7 +20,7 @@ namespace ConnectFour.Core.Tests
                                   new Cell(0, 4),
                                   new Cell(0, 5)
                               };
-            var testTarget = new Column(columnCells);
+            var testTarget = new Column(0, columnCells);
             var chip = new Chip("Foo", new Color(128, 0, 0));
 
             // Act
@@ -44,7 +44,7 @@ namespace ConnectFour.Core.Tests
                                   new Cell(0, 4) { Chip = new Chip("Foo", new Color(128, 0, 0)) },
                                   new Cell(0, 5) { Chip = new Chip("Foo", new Color(128, 0, 0)) },
                               };
-            var testTarget = new Column(columnCells);
+            var testTarget = new Column(0, columnCells);
             var chip = new Chip("Foo", new Color(128, 0, 0));
 
             // Act
@@ -64,7 +64,7 @@ namespace ConnectFour.Core.Tests
                                   new Cell(0, 4) { Chip = new Chip("Foo", new Color(128, 0, 0)) },
                                   new Cell(0, 5) { Chip = new Chip("Foo", new Color(128, 0, 0)) }
                               };
-            var testTarget = new Column(columnCells);
+            var testTarget = new Column(0, columnCells);
 
             // Assert
             Assert.IsTrue(testTarget.IsFull);
@@ -83,7 +83,7 @@ namespace ConnectFour.Core.Tests
                                   new Cell(0, 4),
                                   new Cell(0, 5)
                               };
-            var testTarget = new Column(columnCells);
+            var testTarget = new Column(0, columnCells);
 
             // Assert
             Assert.IsFalse(testTarget.IsFull);

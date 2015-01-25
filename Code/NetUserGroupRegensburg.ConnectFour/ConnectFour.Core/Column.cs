@@ -6,10 +6,15 @@ namespace ConnectFour.Core
 {
     public class Column : BoardLine
     {
-        public Column(IReadOnlyList<Cell> cells)
+        public readonly int Index;
+
+        public Column(int index, IReadOnlyList<Cell> cells)
             : base(cells)
         {
-            
+            if (index < 0)
+                throw new ArgumentException("Index cannot be less than 0", "index");
+
+            Index = index;
         }
 
         public void SetChip(Chip chip)
