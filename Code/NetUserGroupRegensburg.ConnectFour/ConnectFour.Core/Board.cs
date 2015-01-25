@@ -19,6 +19,9 @@ namespace ConnectFour.Core
         {
             if (cells == null) throw new ArgumentNullException("cells");
             if (boardLines == null) throw new ArgumentNullException("boardLines");
+            if (columns == null) throw new ArgumentNullException("columns");
+            if (rows == null) throw new ArgumentNullException("rows");
+            if (diagonals == null) throw new ArgumentNullException("diagonals");
 
             Cells = cells;
             BoardLines = boardLines;
