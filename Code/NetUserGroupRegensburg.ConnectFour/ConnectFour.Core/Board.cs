@@ -7,15 +7,24 @@ namespace ConnectFour.Core
     {
         public readonly IReadOnlyList<Cell> Cells;
         public readonly IReadOnlyList<BoardLine> BoardLines;
+        public readonly IReadOnlyList<Column> Columns;
+        public readonly IReadOnlyList<Row> Rows;
+        public readonly IReadOnlyList<Diagonal> Diagonals;
 
         public Board(IReadOnlyList<Cell> cells,
-                     IReadOnlyList<BoardLine> boardLines)
+                     IReadOnlyList<BoardLine> boardLines,
+                     IReadOnlyList<Column> columns,
+                     IReadOnlyList<Row> rows,
+                     IReadOnlyList<Diagonal> diagonals)
         {
             if (cells == null) throw new ArgumentNullException("cells");
             if (boardLines == null) throw new ArgumentNullException("boardLines");
 
             Cells = cells;
             BoardLines = boardLines;
+            Columns = columns;
+            Rows = rows;
+            Diagonals = diagonals;
         }
 
         public string DetermineWinner()
