@@ -5,9 +5,9 @@ namespace ConnectFour.Core
 {
     public abstract class BoardLine
     {
-        public readonly IReadOnlyList<Cell> Cells;
+        public readonly IReadOnlyList<ICell> Cells;
 
-        protected BoardLine(IReadOnlyList<Cell> cells)
+        protected BoardLine(IReadOnlyList<ICell> cells)
         {
             if (cells == null) throw new ArgumentNullException("cells");
 

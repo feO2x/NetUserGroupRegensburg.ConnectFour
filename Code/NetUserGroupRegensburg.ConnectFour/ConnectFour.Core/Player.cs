@@ -3,11 +3,19 @@ using System.Collections.Generic;
 
 namespace ConnectFour.Core
 {
-    public class Player
+    public interface IPlayer
     {
-        public readonly string Name;
-        public readonly Color Color;
-        public readonly IList<Chip> Chips;
+        void PlaceChipInColumn(IColumn column);
+        string Name { get; }
+        Color Color { get; }
+        IList<Chip> Chips { get; }
+    }
+
+    public class Player : IPlayer
+    {
+        private readonly string _name;
+        private readonly Color _color;
+        private readonly IList<Chip> _chips;
 
         public Player(string name, Color color, IList<Chip> chips)
         {
@@ -15,9 +23,24 @@ namespace ConnectFour.Core
             if (color == null) throw new ArgumentNullException("color");
             if (chips == null) throw new ArgumentNullException("chips");
 
-            Name = name;
-            Color = color;
-            Chips = chips;
+            _name = name;
+            _color = color;
+            _chips = chips;
+        }
+
+        public string Name
+        {
+            get { return _name; }
+        }
+
+        public Color Color
+        {
+            get { return _color; }
+        }
+
+        public IList<Chip> Chips
+        {
+            get { return _chips; }
         }
 
         public void PlaceChipInColumn(IColumn column)
@@ -31,7 +54,5 @@ namespace ConnectFour.Core
 
             column.SetChip(chip);
         }
-
-        public bool HasTurn { get; set; }
     }
 }

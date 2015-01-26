@@ -12,7 +12,7 @@ namespace ConnectFour.Core
         public Diagonal(int columnIndex,
                         int rowIndex,
                         DiagonalDirection direction,
-                        IReadOnlyList<Cell> cells) : base(cells)
+                        IReadOnlyList<ICell> cells) : base(cells)
         {
             if (columnIndex < 0) throw new ArgumentException("Column index cannot be less than zero.", "columnIndex");
             if (rowIndex < 0) throw new ArgumentException("Row index cannot be less than zero.", "rowIndex");

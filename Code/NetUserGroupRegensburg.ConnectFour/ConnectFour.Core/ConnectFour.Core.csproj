@@ -43,11 +43,15 @@
     <Compile Include="BoardFactory.cs" />
     <Compile Include="BoardLine.cs" />
     <Compile Include="Cell.cs" />
+    <Compile Include="CellFactory.cs" />
     <Compile Include="Chip.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="Column.cs" />
     <Compile Include="Diagonal.cs" />
     <Compile Include="DiagonalDirection.cs" />
+    <Compile Include="IBoard.cs" />
+    <Compile Include="ICell.cs" />
+    <Compile Include="ICellFactory.cs" />
     <Compile Include="IColumn.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

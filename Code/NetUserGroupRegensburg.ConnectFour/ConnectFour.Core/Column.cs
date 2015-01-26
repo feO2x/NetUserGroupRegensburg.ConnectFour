@@ -6,15 +6,15 @@ namespace ConnectFour.Core
 {
     public class Column : BoardLine, IColumn
     {
-        public readonly int Index;
+        private readonly int _index;
 
-        public Column(int index, IReadOnlyList<Cell> cells)
+        public Column(int index, IReadOnlyList<ICell> cells)
             : base(cells)
         {
             if (index < 0)
                 throw new ArgumentException("Index cannot be less than 0", "index");
 
-            Index = index;
+            _index = index;
         }
 
         public void SetChip(Chip chip)
@@ -36,6 +36,11 @@ namespace ConnectFour.Core
         public bool IsFull
         {
             get { return Cells.All(cell => cell.Chip != null); }
+        }
+
+        public int Index
+        {
+            get { return _index; }
         }
     }
 }

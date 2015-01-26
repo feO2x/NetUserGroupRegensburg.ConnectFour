@@ -4,16 +4,26 @@ namespace ConnectFour.Core
 {
     public class Chip
     {
-        public readonly string PlayerName;
-        public readonly Color Color;
+        private readonly string _playerName;
+        private readonly Color _color;
 
         public Chip(string playerName, Color color)
         {
             if (playerName == null) throw new ArgumentNullException("playerName");
             if (color == null) throw new ArgumentNullException("color");
 
-            PlayerName = playerName;
-            Color = color;
+            _playerName = playerName;
+            _color = color;
+        }
+
+        public string PlayerName
+        {
+            get { return _playerName; }
+        }
+
+        public Color Color
+        {
+            get { return _color; }
         }
     }
 }

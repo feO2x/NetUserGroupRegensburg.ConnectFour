@@ -1,35 +1,55 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ConnectFour.Core
 {
     public class BoardFactory
     {
+        private readonly ICellFactory _cellFactory;
+
+        public BoardFactory() : this(new CellFactory())
+        {
+            
+        }
+
+        public BoardFactory(ICellFactory cellFactory)
+        {
+            if (cellFactory == null) throw new ArgumentNullException("cellFactory");
+
+            _cellFactory = cellFactory;
+        }
+
         public Board CreateBoard(int numberOfColumns, int numberOfRows)
         {
             // Cell array
-            var twoDimensionalCellArray = new Cell[numberOfColumns][];
+            var twoDimensionalCellArray = new ICell[numberOfColumns][];
             for (var x = 0; x < numberOfColumns; x++)
             {
-                twoDimensionalCellArray[x] = new Cell[numberOfRows];
+                twoDimensionalCellArray[x] = new ICell[numberOfRows];
                 for (var y = 0; y < numberOfRows; y++)
                 {
-                    twoDimensionalCellArray[x][y] = new Cell(x, y);
+                    twoDimensionalCellArray[x][y] = _cellFactory.Create(x, y);
                 }
             }
 
             // Columns
             var columns = new List<Column>();
-            for (var i = 0; i < numberOfColumns; i++)
+            for (var x = 0; x < numberOfColumns; x++)
             {
-                columns.Add(new Column(i, twoDimensionalCellArray[i]));
+                var columnCells = new List<ICell>();
+                for (var y = numberOfRows - 1; y >= 0; y--)
+                {
+                    columnCells.Add(twoDimensionalCellArray[x][y]);
+                }
+                columns.Add(new Column(x, columnCells));
             }
 
             // Rows
             var rows = new List<Row>();
             for (var y = 0; y < numberOfRows; y++)
             {
-                var rowCells = new List<Cell>();
+                var rowCells = new List<ICell>();
                 for (var x = 0; x < numberOfColumns; x++)
                 {
                     rowCells.Add(twoDimensionalCellArray[x][y]);
@@ -46,7 +66,7 @@ namespace ConnectFour.Core
                 var columnIndex = x;
                 var rowIndex = 0;
 
-                var diagonalCells = new List<Cell>();
+                var diagonalCells = new List<ICell>();
                 while (columnIndex < numberOfColumns && rowIndex < numberOfRows)
                 {
                     diagonalCells.Add(twoDimensionalCellArray[columnIndex][rowIndex]);
@@ -63,7 +83,7 @@ namespace ConnectFour.Core
                 var columnIndex = 0;
                 var rowIndex = y;
 
-                var diagonalCells = new List<Cell>();
+                var diagonalCells = new List<ICell>();
                 while (columnIndex < numberOfColumns && rowIndex < numberOfRows)
                 {
                     diagonalCells.Add(twoDimensionalCellArray[columnIndex][rowIndex]);
@@ -82,7 +102,7 @@ namespace ConnectFour.Core
                 var columnIndex = x;
                 var rowIndex = 0;
 
-                var diagonalCells = new List<Cell>();
+                var diagonalCells = new List<ICell>();
                 while (columnIndex >= 0 && rowIndex < numberOfRows)
                 {
                     diagonalCells.Add(twoDimensionalCellArray[columnIndex][rowIndex]);
@@ -99,7 +119,7 @@ namespace ConnectFour.Core
                 var columnIndex = numberOfColumns - 1;
                 var rowIndex = y;
 
-                var diagonalCells = new List<Cell>();
+                var diagonalCells = new List<ICell>();
                 while (columnIndex >= 0 && rowIndex < numberOfRows)
                 {
                     diagonalCells.Add(twoDimensionalCellArray[columnIndex][rowIndex]);

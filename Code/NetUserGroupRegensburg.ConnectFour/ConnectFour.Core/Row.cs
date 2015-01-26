@@ -7,7 +7,7 @@ namespace ConnectFour.Core
     {
         private readonly int _index;
 
-        public Row(int index, IReadOnlyList<Cell> cells) : base(cells)
+        public Row(int index, IReadOnlyList<ICell> cells) : base(cells)
         {
             if (index < 0)
                 throw new ArgumentException("Index cannot be less than zero", "index");

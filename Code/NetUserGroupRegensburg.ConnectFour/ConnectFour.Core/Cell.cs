@@ -2,10 +2,10 @@
 
 namespace ConnectFour.Core
 {
-    public class Cell
+    public class Cell : ICell
     {
-        public readonly int X;
-        public readonly int Y;
+        private readonly int _x;
+        private readonly int _y;
 
         public Cell(int x, int y)
         {
@@ -14,10 +14,20 @@ namespace ConnectFour.Core
             if (y < 0)
                 throw new ArgumentException("y cannot be less than zero.");
 
-            X = x;
-            Y = y;
+            _x = x;
+            _y = y;
         }
 
         public Chip Chip { get; set; }
+
+        public int X
+        {
+            get { return _x; }
+        }
+
+        public int Y
+        {
+            get { return _y; }
+        }
     }
 }

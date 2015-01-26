@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace ConnectFour.Core
 {
-    public class Board
+    public class Board : IBoard
     {
-        public readonly IReadOnlyList<Cell> Cells;
-        public readonly IReadOnlyList<BoardLine> BoardLines;
-        public readonly IReadOnlyList<Column> Columns;
-        public readonly IReadOnlyList<Row> Rows;
-        public readonly IReadOnlyList<Diagonal> Diagonals;
+        private readonly IReadOnlyList<ICell> _cells;
+        private readonly IReadOnlyList<BoardLine> _boardLines;
+        private readonly IReadOnlyList<Column> _columns;
+        private readonly IReadOnlyList<Row> _rows;
+        private readonly IReadOnlyList<Diagonal> _diagonals;
 
-        public Board(IReadOnlyList<Cell> cells,
+        public Board(IReadOnlyList<ICell> cells,
                      IReadOnlyList<BoardLine> boardLines,
                      IReadOnlyList<Column> columns,
                      IReadOnlyList<Row> rows,
@@ -23,17 +23,37 @@ namespace ConnectFour.Core
             if (rows == null) throw new ArgumentNullException("rows");
             if (diagonals == null) throw new ArgumentNullException("diagonals");
 
-            Cells = cells;
-            BoardLines = boardLines;
-            Columns = columns;
-            Rows = rows;
-            Diagonals = diagonals;
+            _cells = cells;
+            _boardLines = boardLines;
+            _columns = columns;
+            _rows = rows;
+            _diagonals = diagonals;
+        }
+
+        public IReadOnlyList<ICell> Cells
+        {
+            get { return _cells; }
+        }
+
+        public IReadOnlyList<Column> Columns
+        {
+            get { return _columns; }
+        }
+
+        public IReadOnlyList<Row> Rows
+        {
+            get { return _rows; }
+        }
+
+        public IReadOnlyList<Diagonal> Diagonals
+        {
+            get { return _diagonals; }
         }
 
         public string DetermineWinner()
         {
 // ReSharper disable once LoopCanBeConvertedToQuery
-            foreach (var boardLine in BoardLines)
+            foreach (var boardLine in _boardLines)
             {
                 var winner = boardLine.DetermineIfPlayerHasFourInALine();
                 if (winner != null)
