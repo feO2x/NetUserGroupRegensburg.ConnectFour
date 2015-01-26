@@ -44,7 +44,7 @@ namespace ConnectFour.Core.Tests
             for (var i = 0; i < 6; i++)
             {
                 Assert.AreEqual(1, sampleColumn.Cells[i].X);
-                Assert.AreEqual(i, sampleColumn.Cells[i].Y);
+                Assert.AreEqual(5 - i, sampleColumn.Cells[i].Y);
             }
         }
 
