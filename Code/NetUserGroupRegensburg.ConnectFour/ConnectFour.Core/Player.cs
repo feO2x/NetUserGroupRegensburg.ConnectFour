@@ -20,7 +20,7 @@ namespace ConnectFour.Core
             Chips = chips;
         }
 
-        public void PlaceChipInColumn(Column column)
+        public void PlaceChipInColumn(IColumn column)
         {
             if (column == null) throw new ArgumentNullException("column");
             if (Chips.Count == 0)
@@ -31,5 +31,7 @@ namespace ConnectFour.Core
 
             column.SetChip(chip);
         }
+
+        public bool HasTurn { get; set; }
     }
 }

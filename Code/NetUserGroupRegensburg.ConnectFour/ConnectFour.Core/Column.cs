@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace ConnectFour.Core
 {
-    public class Column : BoardLine
+    public class Column : BoardLine, IColumn
     {
         public readonly int Index;
 
