@@ -1,5 +1,6 @@
 ﻿using ConnectFour.Core;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 
@@ -39,7 +40,7 @@ namespace ConnectFour.WpfClient
 
         private static Player CreatePlayer(string playerName, Color playerColor)
         {
-            var chips = new List<Chip>();
+            var chips = new ObservableCollection<Chip>();
             for (var i = 0; i < 21; i++)
             {
                 chips.Add(new Chip(playerName, playerColor));
