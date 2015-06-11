@@ -14,7 +14,8 @@ namespace ConnectFour.WpfClient
             base.OnStartup(e);
 
             // Composition root
-            var board = new BoardFactory(new CellPropertyChangedDecoratorFactory()).CreateBoard(7, 6);
+            var cellViewModels = new List<CellViewModelDecorator>();
+            var board = new BoardFactory(new CellViewModelDecoratorFactory(cellViewModels)).CreateBoard(7, 6);
 
             var playerA = CreatePlayer("Player A", new Color(0, 0, 128));
             var playerB = CreatePlayer("Player B", new Color(128, 0, 0));
@@ -27,7 +28,7 @@ namespace ConnectFour.WpfClient
 
             var clickColumnCommands = new List<IClickColumnCommand>();
 
-            var boardViewModel = new BoardViewModel(board.Cells, clickColumnCommands);
+            var boardViewModel = new BoardViewModel(cellViewModels, clickColumnCommands, board.Columns);
 
             var mainWindowViewModel = new MainWindowViewModel(playerViewModels, boardViewModel, board);
 

@@ -1,17 +1,31 @@
-﻿using ConnectFour.Core;
-using System;
+﻿using System;
+using System.Windows.Input;
+using ConnectFour.Core;
 
 namespace ConnectFour.WpfClient
 {
-    public class CellPropertyChangedDecorator : BaseViewModel, ICell
+    public class CellViewModelDecorator : BaseViewModel, ICell
     {
         private readonly ICell _cell;
+        private readonly FunctionalCommand _clickCellCommand;
 
-        public CellPropertyChangedDecorator(ICell cell)
+        public CellViewModelDecorator(ICell cell)
         {
             if (cell == null) throw new ArgumentNullException("cell");
 
             _cell = cell;
+            _clickCellCommand = new FunctionalCommand(RaiseCellClicked);
+        }
+
+        private void RaiseCellClicked()
+        {
+            if (CellClicked != null)
+                CellClicked(this);
+        }
+
+        public ICommand ClickCellCommand
+        {
+            get { return _clickCellCommand; }
         }
 
         public Chip Chip
@@ -36,5 +50,7 @@ namespace ConnectFour.WpfClient
         {
             get { return _cell.Y; }
         }
+
+        public event Action<ICell> CellClicked;
     }
 }

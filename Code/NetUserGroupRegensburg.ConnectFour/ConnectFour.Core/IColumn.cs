@@ -5,5 +5,6 @@
         void SetChip(Chip chip);
         bool IsFull { get; }
         int Index { get; }
+        ICell NextEmptyCell { get; }
     }
 }

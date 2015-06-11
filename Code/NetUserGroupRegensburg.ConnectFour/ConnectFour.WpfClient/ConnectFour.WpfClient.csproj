@@ -58,10 +58,11 @@
       <DependentUpon>BoardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="BoardViewModel.cs" />
-    <Compile Include="CellPropertyChangedDecorator.cs" />
-    <Compile Include="CellPropertyChangedDecoratorFactory.cs" />
+    <Compile Include="CellViewModelDecorator.cs" />
+    <Compile Include="CellViewModelDecoratorFactory.cs" />
     <Compile Include="ClickColumnCommand.cs" />
     <Compile Include="ColorConverter.cs" />
+    <Compile Include="FunctionalCommand.cs" />
     <Compile Include="HasTurnToBrushConverter.cs" />
     <Compile Include="IBoardViewModel.cs" />
     <Compile Include="IClickColumnCommand.cs" />

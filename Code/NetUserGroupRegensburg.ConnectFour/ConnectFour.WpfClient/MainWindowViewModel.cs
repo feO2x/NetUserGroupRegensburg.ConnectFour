@@ -1,7 +1,7 @@
-﻿using ConnectFour.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ConnectFour.Core;
 
 namespace ConnectFour.WpfClient
 {
@@ -39,18 +39,16 @@ namespace ConnectFour.WpfClient
         {
             if (column == null) throw new ArgumentNullException("column");
 
-            var aktuellerSpielerViewModel = _playerViewModels.First(vm => vm.HasTurn);
-            aktuellerSpielerViewModel.Player.PlaceChipInColumn(column);
+            var currentPlayerViewModel = _playerViewModels.First(vm => vm.HasTurn);
+            currentPlayerViewModel.Player.PlaceChipInColumn(column);
 
-            var gewinnerName = _board.DetermineWinner();
-            if (gewinnerName != null)
+            var winnerName = _board.DetermineWinner();
+            if (winnerName != null)
+                GameText = winnerName + " wins!";
+            else
             {
-                GameText = gewinnerName + " wins!";
-            }
-
-            foreach (var spielerViewModel in _playerViewModels)
-            {
-                spielerViewModel.HasTurn = !spielerViewModel.HasTurn;
+                foreach (var playerViewModel in _playerViewModels)
+                    playerViewModel.HasTurn = !playerViewModel.HasTurn;
             }
         }
     }

@@ -10,17 +10,19 @@
         <sd:BoardViewModelSampleData />
     </d:UserControl.DataContext>
     <UserControl.Resources>
-        <ControlTemplate x:Key="PlatzListBoxItemTemplate" TargetType="{x:Type ListBoxItem}">
-            <Border BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}">
+        <ControlTemplate x:Key="CellListBoxItemTemplate" TargetType="{x:Type ListBoxItem}">
+            <Button BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Background="Transparent"
+                    Command="{Binding ClickCellCommand}">
                 <Ellipse Width="80" Height="80" Fill="{Binding Path=Chip.Color, Converter={StaticResource ColorConverter}}" />
-            </Border>
+            </Button>
         </ControlTemplate>
 
-        <Style x:Key="PlatzListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+        <Style x:Key="CellListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="BorderBrush" Value="Black" />
-            <Setter Property="Template" Value="{StaticResource PlatzListBoxItemTemplate}" />
+            <Setter Property="Template" Value="{StaticResource CellListBoxItemTemplate}" />
             <Setter Property="Grid.Row" Value="{Binding Y}" />
             <Setter Property="Grid.Column" Value="{Binding X}" />
         </Style>
@@ -52,7 +54,7 @@
             <Setter Property="BorderBrush" Value="Transparent" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Background" Value="Transparent" />
-            <Setter Property="ItemContainerStyle" Value="{StaticResource PlatzListBoxItemStyle}" />
+            <Setter Property="ItemContainerStyle" Value="{StaticResource CellListBoxItemStyle}" />
             <Setter Property="ItemsPanel" Value="{StaticResource PlatzListBoxItemsPanelTemplate}" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
         </Style>

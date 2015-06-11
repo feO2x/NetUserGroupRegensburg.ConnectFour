@@ -42,5 +42,10 @@ namespace ConnectFour.Core
         {
             get { return _index; }
         }
+
+        public ICell NextEmptyCell
+        {
+            get { return Cells.FirstOrDefault(cell => cell.Chip == null); }
+        }
     }
 }

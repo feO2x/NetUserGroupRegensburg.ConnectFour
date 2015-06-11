@@ -52,6 +52,17 @@ namespace ConnectFour.WpfClient.Tests
         }
 
         [TestMethod]
+        public void PlayTurnDoesNotChangedPlayersWhenWinnerIsDetermined()
+        {
+            _boardMock.WinnerName = "Foo";
+
+            _testTarget.PlayTurn(new ColumnMock());
+
+            Assert.IsTrue(_playerViewModelMocks[0].HasTurn &&
+                          _playerViewModelMocks[1].HasTurn == false);
+        }
+
+        [TestMethod]
         public void PlayTurnChangesTurnWhenNoWinnerIsDetermined()
         {
             _testTarget.PlayTurn(new ColumnMock());

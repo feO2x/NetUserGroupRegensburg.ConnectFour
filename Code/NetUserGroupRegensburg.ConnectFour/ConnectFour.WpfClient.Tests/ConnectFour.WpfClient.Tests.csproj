@@ -55,9 +55,12 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BoardMock.cs" />
+    <Compile Include="CellMock.cs" />
+    <Compile Include="CellViewModelDecoratorTests.cs" />
     <Compile Include="ClickColumnCommandTests.cs" />
     <Compile Include="ColorConverterTests.cs" />
     <Compile Include="ColumnMock.cs" />
+    <Compile Include="FunctionalCommandTests.cs" />
     <Compile Include="HasTurnToBrushConverterTests.cs" />
     <Compile Include="MainWindowViewModelMock.cs" />
     <Compile Include="MainWindowViewModelTests.cs" />

@@ -24,6 +24,8 @@ namespace ConnectFour.WpfClient.Tests
             get { return _index; }
         }
 
+        public ICell NextEmptyCell { get; private set; }
+
         public bool WasSetChipCalledExactlyOnce
         {
             get { return _numberOfSetChipCalls == 1; }
