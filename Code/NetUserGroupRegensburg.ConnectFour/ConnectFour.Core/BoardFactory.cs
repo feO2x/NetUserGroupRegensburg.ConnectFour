@@ -78,7 +78,7 @@ namespace ConnectFour.Core
                     diagonals.Add(new Diagonal(x, 0, diagonalDirection, diagonalCells));
             }
 
-            for (var y = 0; y < numberOfRows; y++)
+            for (var y = 1; y < numberOfRows; y++)
             {
                 var columnIndex = 0;
                 var rowIndex = y;
@@ -114,7 +114,7 @@ namespace ConnectFour.Core
                     diagonals.Add(new Diagonal(x, 0, diagonalDirection, diagonalCells));
             }
 
-            for (var y = 0; y < numberOfRows; y++)
+            for (var y = 1; y < numberOfRows; y++)
             {
                 var columnIndex = numberOfColumns - 1;
                 var rowIndex = y;
